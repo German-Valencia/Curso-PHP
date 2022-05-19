@@ -18,7 +18,8 @@
 <body>
     <?php
 
-$busqueda = $_GET["buscar"];
+$usuario = $_GET["usu"];
+$contra = $_GET["con"];
 
 require "datos_conexion.php";
 
@@ -34,24 +35,18 @@ mysqli_select_db($conexion, $db_nombre) or die("no se encuentra la BD");
 mysqli_set_charset($conexion, "utf8");
 
 //$consulta = "select * from lideres where telefono LIKE '%$busqueda%'";
-$consulta = "select * from lideres where nombre = '$busqueda'";
+$consulta = "select * from datospersonales where nombre = '$usuario' and contra = '$contra'";
 echo "$consulta <br><br>";
 
 $resultados = mysqli_query($conexion, $consulta);
 
 while ($fila = mysqli_fetch_array($resultados, MYSQLI_ASSOC)) {
     echo "<table width='90%' align='center' border='2'><tr><td width='100px'>";
-    echo $fila["CEDULA"] . "</td><td width='100px'>";
-    echo $fila["VINCULO"] . "</td><td width='100px'>";
-    echo $fila["CONTACTADO"] . "</td><td width='100px'>";
-    echo $fila["NOMBRE"] . "</td><td width='100px'>";
-    echo $fila["APELLIDO"] . "</td><td width='100px'>";
-    echo $fila["DIRECCION"] . "</td><td width='100px'>";
-    echo $fila["TELEFONO"] . "</td><td width='100px'>";
-    echo $fila["BARRIO"] . "</td><td width='100px'>";
-    echo $fila["MUNICIPIO"] . "</td><td width='20px'>";
-    echo $fila["VOTACION"] . "</td></tr></table>";
-}
+    echo $fila["nif"] . "</td><td width='100px'>";
+    echo $fila["nombre"] . "</td><td width='100px'>";
+    echo $fila["apellido"] . "</td><td width='100px'>";
+    echo $fila["edad"] . "</td><td width='100px'>";
+    echo $fila["contra"] . "</td></tr></table>";}
 
 mysqli_close($conexion);
 

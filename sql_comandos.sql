@@ -26,6 +26,7 @@
 /* se crea el archivo con .sql y UTF8 - se importa desde el pgadmin y esto crea la tabla en la BD */
 
 /* ------------------------------------------------------------------ */
-
+/* "DELETE FROM datospersonales where nif = '$codnif'"; */
 /* ------------------USANDO COMODINES-------% Y _-------- */
 /* SELECT DIRECCION FROM lideres WHERE direccion LIKE "cra%"  */
+/* UPDATE datospersonales SET nif = 94322595 WHERE nombre='Germán Alberto' */

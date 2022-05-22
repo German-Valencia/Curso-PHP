@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1 {
+            text-align: center;
+            color: rgb(36, 102, 104);
+        }
+        body{
+            background-color: aquamarine;
+        }
+
+        table {
+            width: 25%;
+            background-color: rgb(11, 234, 241);
+            border: 2px solid rgb(255, 255, 255);
+            margin: auto;
+        }
+
+        .izq {
+            text-align: right;
+        }
+
+        .der {
+            text-align: left;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>INTRODUCE TUS DATOS</h1>
+    <form action="comprueba_login.php" method="post">
+
+    <table>
+        <tr>
+            <td class="izq">Login: </td>
+            <td class="der"> <input type="text" name="login"> </td>
+        </tr>
+        <tr>
+            <td class="izq">Password: </td>
+            <td class="der"><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2"> <input type="submit" name="enviar" value="Login"></td>
+        </tr>
+    </table>
+    </form>
+</body>
+
+</html>

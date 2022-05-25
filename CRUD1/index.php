@@ -14,7 +14,26 @@
 include "conexion.php";
 /* $conexion=$base->query("SELECT * FROM datos_usuarios");
 $registros=$conexion->fetchAll(PDO::FETCH_OBJ); */
-$registros = $base->query("SELECT * FROM datos_usuarios")->fetchAll(PDO::FETCH_OBJ);
+
+//-------------------------paginacion--------------------------
+$tam_pag = 3;
+        if (isset($_GET["pagina"])) {
+            if ($_GET["pagina"]==1) {
+                header("location:index.php");
+            } else {
+                $pagina = $_GET["pagina"];
+            }
+        } else {
+            $pagina = 1;
+        }
+        $empezar_desde = ($pagina - 1) * $tam_pag;
+        $sql_total = "SELECT * FROM datos_usuarios";
+        $resultado = $base->prepare($sql_total);
+        $resultado->execute(array());
+        $num_filas = $resultado->rowCount();
+        $total_pag = ceil($num_filas / $tam_pag);
+//-------------------------paginacion--------------------------
+$registros = $base->query("SELECT * FROM datos_usuarios LIMIT $empezar_desde, $tam_pag")->fetchAll(PDO::FETCH_OBJ);
 
 if (isset($_POST["cr"])) {
     $nom = $_POST["Nom"];
@@ -71,7 +90,16 @@ endforeach;
   </table>
 
   </form>
-
+  <div>Paginación</div>
+  <p>
+  <!-- //-----------------------PAGINACIÓN--------------------------- -->
+  <?php  
+  for ($i = 1; $i <= $total_pag; $i++) {
+        echo "<a href='?pagina=" . $i . "'> " . $i . "</a>  ";        
+    }
+    ?>
+    <!--  //-----------------------PAGINACIÓN--------------------------- -->
+  </p>
   <p>&nbsp;</p>
 </body>
 

@@ -2,7 +2,13 @@
 /* CSS Document */
 h1{text-align:center;
 }
-
+div{
+	text-align:center;
+	margin-top: 40rem;
+}
+p{
+	text-align:center;
+}
 .subtitulo{
 	font-size:12px;
 }
@@ -36,4 +42,3 @@ table .primera_fila{
 .centrado{
 	text-align:center;
 }
-
